@@ -5,6 +5,7 @@ const router = express.Router()
 const Announcement = require('../../models/Announcement')
 
 // @ Routes GET api/announcement/:id
+// @ Desc Gets one announcement
 router.get('/:id', async (req, res) => {
     try {
         const announcement = await Announcement.findById(req.params.id)
@@ -16,6 +17,7 @@ router.get('/:id', async (req, res) => {
 })
 
 // @ Routes GET api/announcement
+// @ Desc Gets announcements
 router.get('/', async (req, res) => {
     try {
         const announcements = await Announcement.find()
@@ -27,6 +29,7 @@ router.get('/', async (req, res) => {
 })
 
 // @ Routes POST api/announcement
+// @ Desc Creates new announcement
 router.post('/', async (req, res) => {
     const newAnnouncement = new Announcement(req.body)
     try {
@@ -39,6 +42,7 @@ router.post('/', async (req, res) => {
 })
 
 // @ Routes DELETE api/announcement/:id
+// @ Desc Removes announcement
 router.delete('/:id', async (req, res) => {
     try {
         const announcement = await Announcement.findByIdAndDelete(req.params.id)
@@ -50,6 +54,7 @@ router.delete('/:id', async (req, res) => {
 })
 
 // @ Routes UPDATE api/announcement/:id
+// @ Desc Updates announcement
 router.patch('/:id', async (req, res) => {
     try {
         const announcement = await Announcement.findByIdAndUpdate(req.params.id, req.body)
