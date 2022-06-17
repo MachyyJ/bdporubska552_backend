@@ -1,0 +1,23 @@
+require('dotenv').config()
+const express = require('express')
+const mongoose = require('mongoose')
+
+const app = express()
+
+// BodyParser Middleware
+app.use(express.json())
+
+// Routes
+const announcementRoutes = require('./routes/api/announcement')
+
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => console.log("Connected to mongoDB"))
+    .catch(err => console.log(err))
+
+app.use('/api/announcement', announcementRoutes)
+
+const PORT = process.env.PORT || 3001
+app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`))
