@@ -1,11 +1,13 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 const app = express()
 
 // BodyParser Middleware
 app.use(express.json())
+app.use(cors())
 
 // Routes
 const announcementRoutes = require('./routes/api/announcement')
