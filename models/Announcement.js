@@ -6,21 +6,21 @@ const AnnouncementSchema = new Schema({
         type: String,
         required: true,
     },
+    content: {
+        type: String,
+        required: true,
+    },
+    tag: {
+        type: String,
+        required: true,
+    },
     createdAt: {
         type: Date,
         required: true,
         default: Date.now(),
     },
-    content: {
-        type: String,
-        required: true,
-    },
     publishedAt: {
         type: Date,
-        required: false,
-    },
-    tag: {
-        type: String,
         required: false,
     }
 })
